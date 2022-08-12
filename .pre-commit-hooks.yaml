@@ -18,6 +18,14 @@
   exclude: \.+.terraform\/.*$
   require_serial: true
 
+- id: terraform-providers-lock
+  name: Terraform Providers Lock
+  description: Ensures all provider SHAs for all platforms have been saved to the lock file.
+  entry: hooks/terraform-providers-lock.sh
+  language: script
+  files: \.terraform.lock.hcl$
+  require_serial: true
+
 - id: packer-validate
   name: Packer validate
   description: Validates all Packer configuration files
