@@ -1,3 +1,5 @@
+**NOTE** this fork is used to help us iterate & refactor a few hooks, we plan to upstream these once we're happy with them!
+
 [![Maintained by Gruntwork.io](https://img.shields.io/badge/maintained%20by-gruntwork.io-%235849a6.svg)](https://gruntwork.io/?ref=repo_pre-commit)
 
 # Pre-commit hooks
