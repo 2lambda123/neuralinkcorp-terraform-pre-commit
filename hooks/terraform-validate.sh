@@ -16,6 +16,11 @@ VALIDATE_ERROR=0
 for dir in $(echo "$@" | xargs -n1 dirname | sort -u | uniq); do
   echo "--> Running 'terraform validate' in directory '$dir'"
   pushd "$dir" >/dev/null
+  if [ -f terraform_28490.tf.provider-validate-fix ]; then
+    # https://github.com/hashicorp/terraform/issues/28490#issuecomment-1150022931
+    mv terraform_28490.tf.provider-validate-fix terraform_28490.tf
+    trap "mv terraform_28490.tf terraform_28490.tf.provider-validate-fix" EXIT
+  fi
   terraform init -backend=false || VALIDATE_ERROR=$?
   terraform validate || VALIDATE_ERROR=$?
   popd >/dev/null
