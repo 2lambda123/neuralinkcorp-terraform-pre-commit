@@ -19,10 +19,14 @@ for dir in $(echo "$@" | xargs -n1 dirname | sort -u | uniq); do
   if [ -f terraform_28490.tf.provider-validate-fix ]; then
     # https://github.com/hashicorp/terraform/issues/28490#issuecomment-1150022931
     mv terraform_28490.tf.provider-validate-fix terraform_28490.tf
-    trap "mv terraform_28490.tf terraform_28490.tf.provider-validate-fix" EXIT
   fi
+
   terraform init -backend=false || VALIDATE_ERROR=$?
   terraform validate || VALIDATE_ERROR=$?
+
+  if [ -f terraform_28490.tf ]; then
+    mv terraform_28490.tf terraform_28490.tf.provider-validate-fix
+  fi
   popd >/dev/null
 done
 
