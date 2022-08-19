@@ -7,8 +7,9 @@ set -e
 # workaround to allow GitHub Desktop to work, add this (hopefully harmless) setting here.
 export PATH=$PATH:/usr/local/bin
 
-# Install any plugins defined in .tflint.hcl
-tflint --init
+# Note that we expect the environment this runs in to already have run `tflint --init`!
+# During CI, the image should already have the desired plugins cached, so we're not blasting GitHub
+# too many times.
 
 for file in "$@"; do
   tflint $file
