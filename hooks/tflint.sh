@@ -11,7 +11,7 @@ export PATH=$PATH:/usr/local/bin
 # During CI, the image should already have the desired plugins cached, so we're not blasting GitHub
 # too many times.
 
-for file in "${@:2}"; do
+for file in "$@"; do
   CMD="tflint"
 
   # Find first tflint config in folder hierarchy
