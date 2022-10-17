@@ -26,5 +26,5 @@ for file in "$@"; do
     CMD="tflint -c $CONFIG_FILE"
   fi
 
-  TFLINT_LOG=debug $CMD $file
+  $CMD $file
 done
