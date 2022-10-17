@@ -40,7 +40,7 @@
   entry: hooks/tflint.sh
   language: script
   files: \.tf$
-  exclude: \.+.terraform\/.*$
+  exclude: \.terraform(\/.*|\.lock\.hcl)$
 
 - id: terragrunt-hclfmt
   name: Terragrunt hclfmt
