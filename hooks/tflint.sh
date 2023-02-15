@@ -15,7 +15,7 @@ for file in "$@"; do
   CMD="tflint"
 
   # Find first tflint config in folder hierarchy
-  CONFIG_PATH=$(readlink -e ${file%/*})
+  CONFIG_PATH=$(readlink -f ${file%/*})
   while [[ "$CONFIG_PATH" != "" && ! -e "$CONFIG_PATH/.tflint.hcl" ]]; do
     CONFIG_PATH="${CONFIG_PATH%/*}"
   done
